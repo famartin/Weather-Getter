@@ -8,8 +8,8 @@ app.get('/weather', (req, res) => {
 			return (data.json());
 		})
 		.then((json) => {
-			console.log(json.main);
-			res.send(json.main);
+			console.log(json);
+			res.send(json);
 		});
 });
 
