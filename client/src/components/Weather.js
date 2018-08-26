@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from './Form';
 
 class Weather extends Component {
 
@@ -16,8 +17,9 @@ class Weather extends Component {
 		};
 	}
 
-	componentDidMount() {
-		fetch('/weather')
+	getWeather = (e) => {
+		e.preventDefault();
+		fetch(`/weather/${e.target.elements.cityName.value}`)
 			.then(res => {
 				console.log(res);
 				return res.json();
@@ -40,6 +42,7 @@ class Weather extends Component {
 	render() {
 		return (
 			<div className="Weather">
+				<Form getWeather={this.getWeather} />
 				<h1>Weather</h1>
 				<p>Temperature: {this.state.temp}</p>
 				<p>High: {this.state.high}</p>
@@ -51,6 +54,7 @@ class Weather extends Component {
 			</div>
 		);
 	}
+
 }
 
 export default Weather;
