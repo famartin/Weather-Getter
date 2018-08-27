@@ -2,10 +2,28 @@ var express = require('express');
 var fetch = require('node-fetch');
 var app = express();
 
+/** API Key **/
+const appId = 'd1cb07c66c7dec87991233db29cbbe78';
+
+/** Get Current weather from API **/
+
 app.get('/weather/:cityName', (req, res) => {
-	const appId = 'd1cb07c66c7dec87991233db29cbbe78';
-	console.log(req.params.cityName);
+	console.log(req.params.cityName);// eslint-disable-next-line
 	fetch(`http://api.openweathermap.org/data/2.5/weather?q=${req.params.cityName}&units=imperial&appid=${appId}`)
+		.then((data) => {
+			return (data.json());
+		})
+		.then((json) => {
+			console.log(json);
+			res.send(json);
+		});
+});
+
+/** Get 5 Day Forecast from API  **/
+
+app.get('/forecast/:cityName', (req, res) => {
+	// eslint-disable-next-line
+	fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${req.params.cityName}&units=imperial&appid=${appId}`)
 		.then((data) => {
 			return (data.json());
 		})

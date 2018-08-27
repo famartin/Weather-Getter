@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from './Form';
+import Forecast from './Forecast';
 
 class Weather extends Component {
 
@@ -27,7 +28,7 @@ class Weather extends Component {
 			})
 			.then(data => {
 				console.log(data);
-				if (data.cod == 200) {
+				if (data.cod === 200) {
 					this.setState({
 						temp: data.main.temp,
 						high: data.main.temp_max,
@@ -60,7 +61,7 @@ class Weather extends Component {
 		return (
 			<div className="Weather">
 				<Form getWeather={this.getWeather} />
-				<h1>Weather</h1>
+				<h1>Current Weather</h1>
 				{
 					this.state.city &&
 					this.state.country &&
@@ -94,6 +95,7 @@ class Weather extends Component {
 					this.state.error &&
 					<p>{this.state.error}</p>
 				}
+				<Forecast />
 			</div>
 		);
 	}
