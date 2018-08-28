@@ -58,9 +58,9 @@ class Weather extends Component {
 
 	render() {
 		return (
-			<div style={{border:'1px solid black'}} className="Weather">
+			<div className="Weather col-md-3 offset-md-1">
+				<h3>Current Weather</h3>
 				<Form getData={this.getWeather} />
-				<h1>Current Weather</h1>
 				{
 					this.state.city &&
 					this.state.country &&

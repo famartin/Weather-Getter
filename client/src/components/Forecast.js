@@ -151,9 +151,9 @@ class Forecast extends Component {
 
 	render() {
 		return (
-			<div style={{border: '1px solid black'}} className="Forecast">
+			<div className="Forecast col-md-6 offset-md-1">
+				<h3>5 Day Forecast</h3>
 				<Form getData={this.getForecast} />
-				<h1>5 Day Forecast</h1>
 				{
 					this.state.city &&
 					<p>Location: {this.state.city}</p>
