@@ -15,6 +15,47 @@ class Forecast extends Component {
 		}
 	}
 
+	formatDate = (date) => {
+		var months = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December'
+		]
+
+		var dayOfWeek = [
+			'Sunday',
+			'Monday',
+			'Tuesday',
+			'Wednesday',
+			'Thursday',
+			'Friday',
+			'Saturday'
+		]
+
+		var array = date.split('-');
+		var month = Number(array[1]);
+		var day = Number(array[2]);
+		var cc = Number(array[0].slice(0, 2));
+		var yy = Number(array[0].slice(2));
+		var mm;
+		var result;
+		cc = (Math.floor(cc / 4)) - (2 * cc) - 1;
+		yy = Math.floor((5 * yy) / 4);
+		mm = Math.floor((26 * (month + 1)) / 10);
+		result = (yy + cc + mm + day) % 7;
+
+		return (dayOfWeek[result] + " " + months[month - 1] + " " + array[2]);
+	}
+
 	convertTime = (time) => {
 		var array = time.split(':');
 
@@ -119,10 +160,10 @@ class Forecast extends Component {
 				}
 				{
 					this.state.day1 &&
-					<div>Day 1: {this.state.day1.slice(0, 1).map((obj) => {
+					<div>{this.state.day1.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{obj.dt_txt.slice(5, 10)}
+								{this.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
@@ -139,10 +180,10 @@ class Forecast extends Component {
 				}
 				{
 					this.state.day2 &&
-					<div>Day 2: {this.state.day2.slice(0, 1).map((obj) => {
+					<div>{this.state.day2.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{obj.dt_txt.slice(5, 10)}
+								{this.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
@@ -159,10 +200,10 @@ class Forecast extends Component {
 				}
 				{
 					this.state.day3 &&
-					<div>Day 3: {this.state.day3.slice(0, 1).map((obj) => {
+					<div>{this.state.day3.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{obj.dt_txt.slice(5, 10)}
+								{this.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
@@ -179,10 +220,10 @@ class Forecast extends Component {
 				}
 				{
 					this.state.day4 &&
-					<div>Day 4: {this.state.day4.slice(0, 1).map((obj) => {
+					<div>{this.state.day4.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{obj.dt_txt.slice(5, 10)}
+								{this.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
@@ -199,10 +240,10 @@ class Forecast extends Component {
 				}
 				{
 					this.state.day5 &&
-					<div>Day 5: {this.state.day5.slice(0, 1).map((obj) => {
+					<div>{this.state.day5.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{obj.dt_txt.slice(5, 10)}
+								{this.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
