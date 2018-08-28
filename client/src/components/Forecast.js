@@ -34,37 +34,47 @@ class Forecast extends Component {
 					});
 
 					var i = 0;
-					while(i < 7) {
+					var day = data.list[i].dt_txt.slice(8, 10);
+					console.log(day);
+					while(data.list[i].dt_txt.slice(8, 10) === day) {
 						this.setState({
 							day1: [...this.state.day1, data.list[i]]
 						});
 						i++;
 					}
-					while(i < 15) {
+					day = data.list[i].dt_txt.slice(8, 10);
+					console.log(day);
+					while(data.list[i].dt_txt.slice(8, 10) === day) {
 						this.setState({
 							day2: [...this.state.day2, data.list[i]]
 						});
 						i++;
 					}
-					while(i < 23) {
+					day = data.list[i].dt_txt.slice(8, 10);
+					console.log(day);
+					while(data.list[i].dt_txt.slice(8, 10) === day) {
 						this.setState({
 							day3: [...this.state.day3, data.list[i]]
 						});
 						i++;
 					}
-					while(i < 31) {
+					day = data.list[i].dt_txt.slice(8, 10);
+					console.log(day);
+					while(data.list[i].dt_txt.slice(8, 10) === day) {
 						this.setState({
 							day4: [...this.state.day4, data.list[i]]
 						});
 						i++;
 					}
-					while(i < 39) {
+					day = data.list[i].dt_txt.slice(8, 10);
+					console.log(day);
+					console.log(i);
+					while(i < 38) {
 						this.setState({
 							day5: [...this.state.day5, data.list[i]]
 						});
 						i++
 					}
-
 					this.setState({
 						city: data.city.name
 					});
