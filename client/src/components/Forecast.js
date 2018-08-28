@@ -69,10 +69,12 @@ class Forecast extends Component {
 					day = data.list[i].dt_txt.slice(8, 10);
 					console.log(day);
 					console.log(i);
-					while(i < 38) {
-						this.setState({
-							day5: [...this.state.day5, data.list[i]]
-						});
+					while((i < data.list.length)) {
+						if (data.list[i].dt_txt.slice(8, 10) === day) {
+							this.setState({
+								day5: [...this.state.day5, data.list[i]]
+							});
+						}
 						i++
 					}
 					this.setState({
