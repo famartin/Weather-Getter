@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Form from './Form';
-import Forecast from './Forecast';
 
 class Weather extends Component {
 
@@ -9,7 +8,7 @@ class Weather extends Component {
 		this.state = {
 			temp: undefined,
 			high: undefined,
-			low: undefined,
+			low: undefined,			
 			state: undefined,
 			desc: undefined,
 			humidity: undefined,
@@ -59,8 +58,8 @@ class Weather extends Component {
 
 	render() {
 		return (
-			<div className="Weather">
-				<Form getWeather={this.getWeather} />
+			<div style={{border:'1px solid black'}} className="Weather">
+				<Form getData={this.getWeather} />
 				<h1>Current Weather</h1>
 				{
 					this.state.city &&
@@ -95,7 +94,6 @@ class Weather extends Component {
 					this.state.error &&
 					<p>{this.state.error}</p>
 				}
-				<Forecast />
 			</div>
 		);
 	}
