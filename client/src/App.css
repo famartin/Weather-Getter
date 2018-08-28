@@ -1,5 +1,5 @@
 body {
-	background-image: linear-gradient(#ffffff, #406163);
+	background-image: linear-gradient(#ffffff, #618688);
 	background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -26,6 +26,46 @@ body {
 	background-color: rgb(62, 72, 88);
 	border-radius: .75em;
 	color: white;
+}
+
+.Form input[type=text] {
+	width: 80%;
+    padding: 12px 20px;
+	margin: 8px 0;
+	background-color: rgb(62, 72, 88);
+    box-sizing: border-box;
+	border: none;
+	color: white;
+	font-size: 2em;
+    border-bottom: 2px solid red;
+}
+
+.Form .button {
+	background-color: rgb(62, 72, 88);
+    border: 1px solid white;
+    color: white;
+	padding: .5em;
+	width: 80%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.Form .button:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 .Title {

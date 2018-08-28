@@ -5,8 +5,8 @@ class Form extends Component {
 		return (
 			<div className="Form">
 				<form onSubmit={this.props.getData} action="/weather" method="get">
-					City: <input type="text" name="cityName" placeholder="City" required></input><br />
-					<input type="submit" value="Submit"></input>
+					<input type="text" name="cityName" placeholder="City..." autocomplete="off" required></input><br />
+					<input className="button" type="submit" value="Submit"></input>
 				</form>
 			</div>
 		);

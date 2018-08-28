@@ -152,7 +152,7 @@ class Forecast extends Component {
 	render() {
 		return (
 			<div className="Forecast col-md-6 offset-md-1">
-				<h3>5 Day Forecast</h3>
+				<h4>5 day forecast.</h4>
 				<Form getData={this.getForecast} />
 				{
 					this.state.city &&
