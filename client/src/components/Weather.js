@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import Form from './Form';
+import Forecast from './Forecast';
 
 class Weather extends Component {
 
 	constructor() {
 		super();
 		this.state = {
-			temp: undefined,
-			high: undefined,
-			low: undefined,			
+			temp: undefined,		
 			state: undefined,
+			wind: undefined,
+			sunrise: undefined,
+			sunset: undefined,
 			desc: undefined,
 			humidity: undefined,
 			country: undefined,
@@ -20,19 +22,23 @@ class Weather extends Component {
 
 	getWeather = (e) => {
 		e.preventDefault();
-		fetch(`/weather/${e.target.elements.cityName.value}`)
+		fetch(`/api/weather/${e.target.elements.cityName.value}`)
 			.then(res => {
-				console.log(res);
 				return res.json();
 			})
 			.then(data => {
 				console.log(data);
+				var sunriseDate = new Date(0);
+				sunriseDate.setUTCSeconds(data.sys.sunrise);
+				var sunsetDate = new Date(0);
+				sunsetDate.setUTCSeconds(data.sys.sunset);
 				if (data.cod === 200) {
 					this.setState({
 						temp: data.main.temp,
-						high: data.main.temp_max,
-						low: data.main.temp_min,
 						state: data.weather[0].main,
+						wind: data.wind.speed,
+						sunrise: sunriseDate.toString().slice(16, 21),
+						sunset: sunsetDate.toString().slice(16, 21),
 						desc: data.weather[0].description,
 						humidity: data.main.humidity,
 						country: data.sys.country,
@@ -43,9 +49,10 @@ class Weather extends Component {
 				else {
 					this.setState({
 						temp: undefined,
-						high: undefined,
-						low: undefined,
 						state: undefined,
+						wind: undefined,
+						sunrise: undefined,
+						sunset: undefined,
 						desc: undefined,
 						humidity: undefined,
 						country: undefined,
@@ -61,39 +68,45 @@ class Weather extends Component {
 			<div className="Weather col-md-3 offset-md-1">
 				<h4>current weather.</h4>
 				<Form getData={this.getWeather} />
+				<ul className="WeatherInfo">
 				{
 					this.state.city &&
 					this.state.country &&
-					<p>Location: {this.state.city}, {this.state.country}</p>
+					<li><span className="grey">Location:</span> {this.state.city}, {this.state.country}</li>
 				}
 				{
 					this.state.temp &&
-					<p>Temperature: {this.state.temp}&#176; F</p>
-				}
-				{
-					this.state.high &&
-					<p>High: {this.state.high}&#176; F</p>
-				}
-				{
-					this.state.low &&
-					<p>Low: {this.state.low}&#176; F</p>
+					<li><span className="grey">Temperature:</span> {Math.ceil(this.state.temp)}&#176; F</li>
 				}
 				{
 					this.state.humidity &&
-					<p>Humidity: {this.state.humidity}%</p>
+					<li><span className="grey">Humidity:</span> {this.state.humidity}%</li>
+				}
+				{
+					this.state.sunrise &&
+					<li><span className="grey">Sunrise:</span> {Forecast.convertTime(this.state.sunrise)}</li>
+				}
+				{
+					this.state.sunset &&
+					<li><span className="grey">Sunset:</span> {Forecast.convertTime(this.state.sunset)}</li>
+				}
+				{
+					this.state.wind &&
+					<li><span className="grey">Wind:</span> {Math.ceil(this.state.wind)} mph</li>
 				}
 				{
 					this.state.state &&
-					<p>Status: {this.state.state}</p>
+					<li><span className="grey">Status:</span> {this.state.state}</li>
 				}
 				{
 					this.state.desc &&
-					<p>Description: {this.state.desc}</p>
+					<li><span className="grey">Description:</span> {this.state.desc}</li>
 				}
 				{
 					this.state.error &&
-					<p>{this.state.error}</p>
+					<li>{this.state.error}</li>
 				}
+				</ul>
 			</div>
 		);
 	}

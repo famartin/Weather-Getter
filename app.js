@@ -5,9 +5,9 @@ var app = express();
 /** API Key **/
 const appId = 'd1cb07c66c7dec87991233db29cbbe78';
 
-/** Get Current weather from API **/
+/** API Call to Get Current weather **/
 
-app.get('/weather/:cityName', (req, res) => {
+app.get('/api/weather/:cityName', (req, res) => {
 	console.log(req.params.cityName);// eslint-disable-next-line
 	fetch(`http://api.openweathermap.org/data/2.5/weather?q=${req.params.cityName}&units=imperial&appid=${appId}`)
 		.then((data) => {
@@ -19,9 +19,9 @@ app.get('/weather/:cityName', (req, res) => {
 		});
 });
 
-/** Get 5 Day Forecast from API  **/
+/** API call to Get 5 Day Forecast **/
 
-app.get('/forecast/:cityName', (req, res) => {
+app.get('/api/forecast/:cityName', (req, res) => {
 	// eslint-disable-next-line
 	fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${req.params.cityName}&units=imperial&appid=${appId}`)
 		.then((data) => {
@@ -34,6 +34,7 @@ app.get('/forecast/:cityName', (req, res) => {
 });
 
 var http = require('http').Server(app);
-http.listen(4000, () => {
+var port = process.env.PORT || 4000;
+http.listen(port, () => {
 	console.log('Listening on port 4000');
 });

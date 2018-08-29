@@ -56,7 +56,7 @@ class Forecast extends Component {
 		return (dayOfWeek[result] + " " + months[month - 1] + " " + array[2]);
 	}
 
-	convertTime = (time) => {
+	static convertTime = (time) => {
 		var array = time.split(':');
 
 		var hours = Number(array[0]);
@@ -80,7 +80,7 @@ class Forecast extends Component {
 
 	getForecast = (e) => {
 		e.preventDefault();
-		fetch(`/forecast/${e.target.elements.cityName.value}`)
+		fetch(`/api/forecast/${e.target.elements.cityName.value}`)
 			.then(res => {
 				return res.json();
 			})

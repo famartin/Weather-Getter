@@ -14,16 +14,20 @@ body {
 	box-shadow: 8px 15px 60px 5px rgba(0, 0, 0, .3);
 	padding: 2%;
 	height: 60em;
-	background-color: rgb(62, 72, 88);
+	background-image: linear-gradient(rgb(62, 72, 88), #466364);
+	background-repeat: no-repeat;
+    background-attachment: fixed;
 	border-radius: .75em;
-	color: white;
+	color: rgb(255, 255, 255);
 }
 
 .Forecast {
 	box-shadow: 8px 15px 60px 5px rgba(0, 0, 0, .3);
 	padding: 2%;
 	height: 60em;
-	background-color: rgb(62, 72, 88);
+	background-image: linear-gradient(rgb(62, 72, 88), #466364);
+	background-repeat: no-repeat;
+    background-attachment: fixed;
 	border-radius: .75em;
 	color: white;
 }
@@ -32,18 +36,18 @@ body {
 	width: 80%;
     padding: 12px 20px;
 	margin: 8px 0;
-	background-color: rgb(62, 72, 88);
+	background-color: rgb(0, 0, 0, 0);
     box-sizing: border-box;
 	border: none;
-	color: white;
+	color: rgb(255, 255, 255);
 	font-size: 2em;
     border-bottom: 2px solid red;
 }
 
 .Form .button {
-	background-color: rgb(62, 72, 88);
-    border: 1px solid white;
-    color: white;
+	background-color: rgb(0, 0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 	padding: .5em;
 	width: 80%;
     text-align: center;
@@ -57,8 +61,24 @@ body {
 }
 
 .Form .button:hover {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255, .8);
     color: rgb(0, 0, 0);
+}
+
+.WeatherInfo {
+	list-style: none;
+	margin-top: 8em;
+	text-align:left;
+
+}
+
+.WeatherInfo li {
+	margin: 0 0 1.2em 0;
+	font-size: 1.2em;
+}
+
+.grey {
+	color: rgb(196, 196, 196);
 }
 
 input:focus,
@@ -66,8 +86,4 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
-}
-
-.Title {
-	text-align: center;
 }
