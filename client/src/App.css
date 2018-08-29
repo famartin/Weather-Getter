@@ -4,16 +4,25 @@ body {
     background-attachment: fixed;
 }
 
+#root {
+	height: 100%;
+}
+
 .App {
 	text-align:center;
-	margin-top: 4em;
-	height: 62em;
+	margin-top: 3vw;
+	margin-bottom: 3vw;
+	height: 100%;
+}
+
+.MainRow {
+	height: 100%;
 }
 
 .Weather {
 	box-shadow: 8px 15px 60px 5px rgba(0, 0, 0, .3);
 	padding: 2%;
-	height: 60em;
+	height: 100%;
 	background-image: linear-gradient(rgb(62, 72, 88), #466364);
 	background-repeat: no-repeat;
     background-attachment: fixed;
@@ -24,7 +33,7 @@ body {
 .Forecast {
 	box-shadow: 8px 15px 60px 5px rgba(0, 0, 0, .3);
 	padding: 2%;
-	height: 60em;
+	height: 100%;
 	background-image: linear-gradient(rgb(62, 72, 88), #466364);
 	background-repeat: no-repeat;
     background-attachment: fixed;
@@ -40,7 +49,7 @@ body {
     box-sizing: border-box;
 	border: none;
 	color: rgb(255, 255, 255);
-	font-size: 2em;
+	font-size: 220%;
     border-bottom: 2px solid red;
 }
 
@@ -65,16 +74,18 @@ body {
     color: rgb(0, 0, 0);
 }
 
-.WeatherInfo {
+.WeatherInfo,
+.ForecastInfo {
 	list-style: none;
-	margin-top: 8em;
+	margin-top: 4vw;
 	text-align:left;
+	height: 100%;
 
 }
 
 .WeatherInfo li {
-	margin: 0 0 1.2em 0;
-	font-size: 1.2em;
+	margin: 0 0 1.2vw 0;
+	font-size: 130%;
 }
 
 .grey {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Form from './Form';
-import Forecast from './Forecast';
+import Helpers from '../Helpers';
 
 class Weather extends Component {
 
@@ -30,8 +30,10 @@ class Weather extends Component {
 				console.log(data);
 				var sunriseDate = new Date(0);
 				sunriseDate.setUTCSeconds(data.sys.sunrise);
+				console.log(sunriseDate.toString());
 				var sunsetDate = new Date(0);
 				sunsetDate.setUTCSeconds(data.sys.sunset);
+				console.log(sunsetDate.toString());
 				if (data.cod === 200) {
 					this.setState({
 						temp: data.main.temp,
@@ -84,11 +86,11 @@ class Weather extends Component {
 				}
 				{
 					this.state.sunrise &&
-					<li><span className="grey">Sunrise:</span> {Forecast.convertTime(this.state.sunrise)}</li>
+					<li><span className="grey">Sunrise:</span> {Helpers.convertTime(this.state.sunrise)}</li>
 				}
 				{
 					this.state.sunset &&
-					<li><span className="grey">Sunset:</span> {Forecast.convertTime(this.state.sunset)}</li>
+					<li><span className="grey">Sunset:</span> {Helpers.convertTime(this.state.sunset)}</li>
 				}
 				{
 					this.state.wind &&

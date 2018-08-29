@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from './Form';
+import Helpers from '../Helpers';
 
 
 class Forecast extends Component {
@@ -15,7 +16,7 @@ class Forecast extends Component {
 		}
 	}
 
-	formatDate = (date) => {
+	/*formatDate = (date) => {
 		var months = [
 			'January',
 			'February',
@@ -54,9 +55,9 @@ class Forecast extends Component {
 		result = (yy + cc + mm + day) % 7;
 
 		return (dayOfWeek[result] + " " + months[month - 1] + " " + array[2]);
-	}
+	}*/
 
-	static convertTime = (time) => {
+	/*static convertTime = (time) => {
 		var array = time.split(':');
 
 		var hours = Number(array[0]);
@@ -72,11 +73,11 @@ class Forecast extends Component {
 			timeValue= "12";
 		}
 
-		timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;  // get minutes
-		timeValue += (hours >= 12) ? " pm" : " am";  // get AM/PM
+		timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
+		timeValue += (hours >= 12) ? " pm" : " am";
 
 		return (timeValue);
-	}
+	}*/
 
 	getForecast = (e) => {
 		e.preventDefault();
@@ -154,6 +155,7 @@ class Forecast extends Component {
 			<div className="Forecast col-md-6 offset-md-1">
 				<h4>5 day forecast.</h4>
 				<Form getData={this.getForecast} />
+				<ul className="ForecastInfo">
 				{
 					this.state.city &&
 					<p>Location: {this.state.city}</p>
@@ -163,7 +165,7 @@ class Forecast extends Component {
 					<div>{this.state.day1.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{this.formatDate(obj.dt_txt.slice(0, 10))}
+								{Helpers.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
@@ -173,7 +175,7 @@ class Forecast extends Component {
 					this.state.day1.map(obj => {
 						return (
 							<div key={obj.dt}>
-								<p>{this.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
+								<p>{Helpers.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
 							</div>
 						);
 					})
@@ -183,7 +185,7 @@ class Forecast extends Component {
 					<div>{this.state.day2.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{this.formatDate(obj.dt_txt.slice(0, 10))}
+								{Helpers.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
@@ -193,7 +195,7 @@ class Forecast extends Component {
 					this.state.day2.map(obj => {
 						return (
 							<div key={obj.dt}>
-								<p>{this.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
+								<p>{Helpers.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
 							</div>
 						);
 					})
@@ -203,7 +205,7 @@ class Forecast extends Component {
 					<div>{this.state.day3.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{this.formatDate(obj.dt_txt.slice(0, 10))}
+								{Helpers.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
@@ -213,7 +215,7 @@ class Forecast extends Component {
 					this.state.day3.map(obj => {
 						return (
 							<div key={obj.dt}>
-								<p>{this.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
+								<p>{Helpers.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
 							</div>
 						);
 					})
@@ -223,7 +225,7 @@ class Forecast extends Component {
 					<div>{this.state.day4.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{this.formatDate(obj.dt_txt.slice(0, 10))}
+								{Helpers.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
@@ -233,7 +235,7 @@ class Forecast extends Component {
 					this.state.day4.map(obj => {
 						return (
 							<div key={obj.dt}>
-								<p>{this.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
+								<p>{Helpers.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
 							</div>
 						);
 					})
@@ -243,7 +245,7 @@ class Forecast extends Component {
 					<div>{this.state.day5.slice(0, 1).map((obj) => {
 						return (
 							<div key={obj.dt_txt}>
-								{this.formatDate(obj.dt_txt.slice(0, 10))}
+								{Helpers.formatDate(obj.dt_txt.slice(0, 10))}
 							</div>
 						);
 					})}</div>
@@ -253,11 +255,12 @@ class Forecast extends Component {
 					this.state.day5.map(obj => {
 						return (
 							<div key={obj.dt}>
-								<p>{this.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
+								<p>{Helpers.convertTime(obj.dt_txt.slice(11))} -- {obj.main.temp}</p>
 							</div>
 						);
 					})
 				}
+				</ul>
 			</div>
 		);
 	}
