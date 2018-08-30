@@ -67,7 +67,7 @@ class Weather extends Component {
 
 	render() {
 		return (
-			<div className="Weather col-md-3 offset-md-1">
+			<div className="Weather col-md-2">
 				<h4>current weather.</h4>
 				<Form getData={this.getWeather} />
 				<ul className="WeatherInfo">
