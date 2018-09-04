@@ -1,6 +1,10 @@
 var express = require('express');
 var fetch = require('node-fetch');
+var path = require('path');
 var app = express();
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/public')));
 
 /** API Key **/
 const appId = 'd1cb07c66c7dec87991233db29cbbe78';
@@ -32,6 +36,10 @@ app.get('/api/forecast/:cityName', (req, res) => {
 			res.send(json);
 		});
 });
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname+'/client/public/index.html'));
+  });
 
 var http = require('http').Server(app);
 var port = process.env.PORT || 4000;
