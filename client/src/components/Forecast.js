@@ -209,12 +209,10 @@ class Forecast extends Component {
 					})
 				}
 				</ul>
-				<ul className="errorMessage">
 				{
 					this.state.error &&
-					<li>{this.state.error}</li>
+					<p style={{textAlign: 'left', marginTop: '2%'}}>{this.state.error}</p>
 				}
-				</ul>
 				</div>
 			</div>
 		);
