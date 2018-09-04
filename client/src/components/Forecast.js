@@ -12,7 +12,8 @@ class Forecast extends Component {
 			day3: undefined,
 			day4: undefined,
 			day5: undefined,
-			city: undefined
+			city: undefined,
+			error: undefined
 		}
 	}
 
@@ -81,7 +82,8 @@ class Forecast extends Component {
 						day3: undefined,
 						day4: undefined,
 						day5: undefined,
-						city: undefined
+						city: undefined,
+						error: data.message
 					});
 				}
 			});
@@ -205,6 +207,12 @@ class Forecast extends Component {
 							</li>
 						);
 					})
+				}
+				</ul>
+				<ul className="errorMessage">
+				{
+					this.state.error &&
+					<li>{this.state.error}</li>
 				}
 				</ul>
 				</div>

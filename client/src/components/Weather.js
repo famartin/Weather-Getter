@@ -27,14 +27,11 @@ class Weather extends Component {
 				return res.json();
 			})
 			.then(data => {
-				console.log(data);
-				var sunriseDate = new Date(0);
-				sunriseDate.setUTCSeconds(data.sys.sunrise);
-				console.log(sunriseDate.toString());
-				var sunsetDate = new Date(0);
-				sunsetDate.setUTCSeconds(data.sys.sunset);
-				console.log(sunsetDate.toString());
 				if (data.cod === 200) {
+					var sunriseDate = new Date(0);
+					sunriseDate.setUTCSeconds(data.sys.sunrise);
+					var sunsetDate = new Date(0);
+					sunsetDate.setUTCSeconds(data.sys.sunset);
 					this.setState({
 						temp: data.main.temp,
 						state: data.weather[0].main,
