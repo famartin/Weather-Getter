@@ -41,8 +41,7 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname+'/client/public/index.html'));
   });
 
-var http = require('http').Server(app);
 var port = process.env.PORT || 4000;
-http.listen(port, () => {
+app.listen(port, () => {
 	console.log('Listening on port 4000');
 });
